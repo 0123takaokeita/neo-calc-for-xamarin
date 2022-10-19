@@ -2,49 +2,47 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="neo_culc_for_xamarin.MainPage">
-    <StackLayout
-        Padding="20, 130, 20, 0">
-        <StackLayout
-            HeightRequest="100"
-            BackgroundColor="#748093"
-            >
+    <StackLayout Padding="20, 130, 20, 0">
+        <StackLayout Orientation="Horizontal">
+            <Label BackgroundColor="#748093" Text="今日のおみくじを選択してください。" />
+            <Label BackgroundColor="#748093" WidthRequest="200" Text="電卓" />
         </StackLayout>
-        <Grid
-            Margin="0,50"
-            BackgroundColor="BlanchedAlmond"
-            >
+        <StackLayout HeightRequest="100" BackgroundColor="#748093" >
+            <Label Text="main Display" />
+        </StackLayout>
+        <Grid Margin="0,50">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*" />
-                <ColumnDefinition Width="0.5*" />
-                <ColumnDefinition Width="0.5*" />
-                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="0.25*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100" />
+                <RowDefinition Height="50" />
                 <RowDefinition Height="100" />
                 <RowDefinition Height="100" />
                 <RowDefinition Height="100" />
                 <RowDefinition Height="100" />
             </Grid.RowDefinitions>
-            <Button Grid.Column="0" Grid.Row="0" Text="AC" />
-            <Button Grid.Column="1" Grid.Row="0" Text="+/-"/>
-            <Button Grid.Column="2" Grid.Row="0" Text="%" />
-            <Button Grid.Column="3" Grid.Row="0" Text="÷" />
-            <Button Grid.Column="0" Grid.Row="1" Text="7" />
-            <Button Grid.Column="1" Grid.Row="1" Text="8" />
-            <Button Grid.Column="2" Grid.Row="1" Text="9" />
-            <Button Grid.Column="3" Grid.Row="1" Text="☓" />
-            <Button Grid.Column="0" Grid.Row="2" Text="4" />
-            <Button Grid.Column="1" Grid.Row="2" Text="5" />
-            <Button Grid.Column="2" Grid.Row="2" Text="6" />
-            <Button Grid.Column="3" Grid.Row="2" Text="-" />
-            <Button Grid.Column="0" Grid.Row="3" Text="1" />
-            <Button Grid.Column="1" Grid.Row="3" Text="2" />
-            <Button Grid.Column="2" Grid.Row="3" Text="3" />
-            <Button Grid.Column="3" Grid.Row="3" Text="+" />
-            <Button Grid.Column="0" Grid.Row="4" Text="0" />
-            <Button Grid.Column="2" Grid.Row="4" Text="." />
-            <Button Grid.Column="3" Grid.Row="4" Text="=" />
+            <Button Grid.Column="0" Grid.Row="0" Text="AC"  BorderRadius="20" BackgroundColor="LightGray"/>
+            <Button Grid.Column="1" Grid.Row="0" Text="+/-" BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="2" Grid.Row="0" Text="%"   BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="3" Grid.Row="0" Text="÷"   BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="0" Grid.Row="1" Text="7"   BorderRadius="30" BackgroundColor="LightGray" />
+            <Button Grid.Column="1" Grid.Row="1" Text="8"   BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="2" Grid.Row="1" Text="9"   BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="3" Grid.Row="1" Text="☓"   BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="0" Grid.Row="2" Text="4"   BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="1" Grid.Row="2" Text="5"   BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="2" Grid.Row="2" Text="6"   BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="3" Grid.Row="2" Text="-"   BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="0" Grid.Row="3" Text="1"   BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="1" Grid.Row="3" Text="2"   BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="2" Grid.Row="3" Text="3"   BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="3" Grid.Row="3" Text="+"   BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="0" Grid.Row="4" Text="0"   BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="2" Grid.Row="4" Text="."   BorderRadius="20" BackgroundColor="LightGray" />
+            <Button Grid.Column="3" Grid.Row="4" Text="="   BorderRadius="20" BackgroundColor="LightGray" />
         </Grid>
     </StackLayout>
 </ContentPage>
