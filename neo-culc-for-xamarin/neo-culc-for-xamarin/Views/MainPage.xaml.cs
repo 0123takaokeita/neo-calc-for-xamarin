@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
+using neo_culc_for_xamarin.ViewModels;
+using neo_culc_for_xamarin.Models;
 
 namespace neo_culc_for_xamarin
 {
@@ -13,7 +9,7 @@ namespace neo_culc_for_xamarin
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = new MainViewModel();
         }
     }
 }
-

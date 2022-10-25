@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:neo_culc_for_xamarin.ViewModels"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Class="neo_culc_for_xamarin.MainPage"
+             mc:Ignorable="d"
+             >
+    <d:ContentPage.BindingContext>
+        <local:MainViewModel/>
+    </d:ContentPage.BindingContext>
+
+    <StackLayout Padding="20, 250, 20, 0" BackgroundColor="WhiteSmoke">
+        <Label Text="{Binding Title}"
+               x:Name="ModeName"
+               HorizontalTextAlignment="Start"
+               FontSize="20"
+               HeightRequest="30"
+               />
+        <Label Text="{Binding SubTitle}"
+               x:Name="Info"
+               HeightRequest="30"
+               />
+        <Label Text="{Binding DispText}"
+               FontSize="60"
+               HorizontalTextAlignment="End"
+               VerticalTextAlignment="Center"
+               HeightRequest="70"
+               />
+        <Grid RowSpacing="15">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
+            </Grid.RowDefinitions>
+            <Button
+                Text="AC"
+                FontSize="20"
+                Grid.Column="0"
+                Grid.Row="0"
+                Command="{Binding ClearDisplay}"
+                BackgroundColor="LightSalmon"
+                />
+            <Button
+                FontSize="20"
+                Grid.Column="1"
+                Grid.Row="0"
+                Text="√"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                FontSize="20"
+                Grid.Column="2"
+                Grid.Row="0"
+                Text="%"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                FontSize="20"
+                Grid.Column="3"
+                Grid.Row="0"
+                Text="÷"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                Text="7"
+                FontSize="20"
+                Grid.Column="0"
+                Grid.Row="1"
+                Command="{Binding AddNumber}"
+                CommandParameter="7"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                Text="8"
+                FontSize="20"
+                Grid.Column="1"
+                Grid.Row="1"
+                Command="{Binding AddNumber}"
+                CommandParameter="8"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                Text="9"
+                FontSize="20"
+                Grid.Column="2"
+                Grid.Row="1"
+                Command="{Binding AddNumber}"
+                CommandParameter="9"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                Text="☓"
+                FontSize="20"
+                Grid.Column="3"
+                Grid.Row="1"
+                Command="{Binding ClearDisplay}"
+                CommandParameter="9"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                Text="4"
+                FontSize="20"
+                Grid.Column="0"
+                Grid.Row="2"
+                Command="{Binding AddNumber}"
+                CommandParameter="4"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                Text="5"
+                FontSize="20"
+                Grid.Column="1"
+                Grid.Row="2"
+                Command="{Binding AddNumber}"
+                CommandParameter="5"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                Text="6"
+                FontSize="20"
+                Grid.Column="2"
+                Grid.Row="2"
+                Command="{Binding AddNumber}"
+                CommandParameter="6"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                Text="-"
+                FontSize="20"
+                Grid.Column="3"
+                Grid.Row="2"
+                Command="{Binding ClearDisplay}"
+                CommandParameter="6"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                Text="1"
+                FontSize="20"
+                Grid.Column="0"
+                Grid.Row="3"
+                Command="{Binding AddNumber}"
+                CommandParameter="1"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                Text="2"
+                FontSize="20"
+                Grid.Column="1"
+                Grid.Row="3"
+                Command="{Binding AddNumber}"
+                CommandParameter="2"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                Text="3"
+                FontSize="20"
+                Grid.Column="2"
+                Grid.Row="3"
+                Command="{Binding AddNumber}"
+                CommandParameter="3"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                FontSize="20"
+                Grid.Column="3"
+                Grid.Row="3"
+                Text="+"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                Text="0"
+                FontSize="20"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.Row="4"
+                Command="{Binding AddNumber}"
+                CommandParameter="0"
+                BackgroundColor="LightGray"
+                />
+            <Button
+                Text="."
+                FontSize="20"
+                Grid.Column="2"
+                Grid.Row="4"
+                Command="{Binding AddNumber}"
+                CommandParameter="."
+                BackgroundColor="LightGray"
+                />
+            <Button
+                FontSize="20"
+                Grid.Column="3"
+                Grid.Row="4"
+                Text="="
+                BackgroundColor="LightGray"
+                />
+        </Grid>
+    </StackLayout>
+</ContentPage>
+
