@@ -11,9 +11,8 @@
         <local:MainViewModel/>
     </d:ContentPage.BindingContext>
 
-    <StackLayout Padding="20, 250, 20, 0" BackgroundColor="WhiteSmoke">
+    <StackLayout Padding="20, 150, 20, 0" BackgroundColor="WhiteSmoke">
         <Label Text="{Binding Title}"
-               x:Name="ModeName"
                HorizontalTextAlignment="Start"
                FontSize="20"
                HeightRequest="30"
@@ -41,42 +40,80 @@
                 <RowDefinition Height="80" />
                 <RowDefinition Height="80" />
                 <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
             </Grid.RowDefinitions>
+            <Button
+                Text="CAL"
+                FontSize="20"
+                Grid.Column="0"
+                Grid.Row="0"
+                Command="{Binding ChangeMode}"
+                CommandParameter="Calculator"
+                BackgroundColor="SkyBlue"
+                />
+            <Button
+                Text="STK"
+                FontSize="20"
+                Grid.Column="1"
+                Grid.Row="0"
+                Command="{Binding ChangeMode}"
+                CommandParameter="Stock"
+                BackgroundColor="SkyBlue"
+                />
+            <Button
+                Text="RSP"
+                FontSize="20"
+                Grid.Column="2"
+                Grid.Row="0"
+                Command="{Binding ChangeMode}"
+                CommandParameter="RSP"
+                BackgroundColor="SkyBlue"
+                />
+            <Button
+                Text="LOT"
+                FontSize="20"
+                Grid.Column="3"
+                Grid.Row="0"
+                Command="{Binding ChangeMode}"
+                CommandParameter="LOT"
+                BackgroundColor="SkyBlue"
+                />
             <Button
                 Text="AC"
                 FontSize="20"
                 Grid.Column="0"
-                Grid.Row="0"
+                Grid.Row="1"
                 Command="{Binding ClearDisplay}"
-                BackgroundColor="LightSalmon"
+                BackgroundColor="Orange"
                 />
             <Button
+                Text="√"
                 FontSize="20"
                 Grid.Column="1"
-                Grid.Row="0"
-                Text="√"
+                Grid.Row="1"
+                Command="{Binding ClearDisplay}"
                 BackgroundColor="LightGray"
                 />
             <Button
+                Text="%"
                 FontSize="20"
                 Grid.Column="2"
-                Grid.Row="0"
-                Text="%"
+                Grid.Row="1"
                 BackgroundColor="LightGray"
                 />
             <Button
+                Text="÷"
                 FontSize="20"
                 Grid.Column="3"
-                Grid.Row="0"
-                Text="÷"
+                Grid.Row="1"
                 BackgroundColor="LightGray"
                 />
             <Button
                 Text="7"
                 FontSize="20"
                 Grid.Column="0"
-                Grid.Row="1"
-                Command="{Binding AddNumber}"
+                Grid.Row="2"
+                Command="{Binding SelectValue}"
                 CommandParameter="7"
                 BackgroundColor="LightGray"
                 />
@@ -84,8 +121,8 @@
                 Text="8"
                 FontSize="20"
                 Grid.Column="1"
-                Grid.Row="1"
-                Command="{Binding AddNumber}"
+                Grid.Row="2"
+                Command="{Binding SelectValue}"
                 CommandParameter="8"
                 BackgroundColor="LightGray"
                 />
@@ -93,8 +130,8 @@
                 Text="9"
                 FontSize="20"
                 Grid.Column="2"
-                Grid.Row="1"
-                Command="{Binding AddNumber}"
+                Grid.Row="2"
+                Command="{Binding SelectValue}"
                 CommandParameter="9"
                 BackgroundColor="LightGray"
                 />
@@ -102,7 +139,7 @@
                 Text="☓"
                 FontSize="20"
                 Grid.Column="3"
-                Grid.Row="1"
+                Grid.Row="2"
                 Command="{Binding ClearDisplay}"
                 CommandParameter="9"
                 BackgroundColor="LightGray"
@@ -111,8 +148,8 @@
                 Text="4"
                 FontSize="20"
                 Grid.Column="0"
-                Grid.Row="2"
-                Command="{Binding AddNumber}"
+                Grid.Row="3"
+                Command="{Binding SelectValue}"
                 CommandParameter="4"
                 BackgroundColor="LightGray"
                 />
@@ -120,8 +157,8 @@
                 Text="5"
                 FontSize="20"
                 Grid.Column="1"
-                Grid.Row="2"
-                Command="{Binding AddNumber}"
+                Grid.Row="3"
+                Command="{Binding SelectValue}"
                 CommandParameter="5"
                 BackgroundColor="LightGray"
                 />
@@ -129,8 +166,8 @@
                 Text="6"
                 FontSize="20"
                 Grid.Column="2"
-                Grid.Row="2"
-                Command="{Binding AddNumber}"
+                Grid.Row="3"
+                Command="{Binding SelectValue}"
                 CommandParameter="6"
                 BackgroundColor="LightGray"
                 />
@@ -138,7 +175,7 @@
                 Text="-"
                 FontSize="20"
                 Grid.Column="3"
-                Grid.Row="2"
+                Grid.Row="3"
                 Command="{Binding ClearDisplay}"
                 CommandParameter="6"
                 BackgroundColor="LightGray"
@@ -147,8 +184,8 @@
                 Text="1"
                 FontSize="20"
                 Grid.Column="0"
-                Grid.Row="3"
-                Command="{Binding AddNumber}"
+                Grid.Row="4"
+                Command="{Binding SelectValue}"
                 CommandParameter="1"
                 BackgroundColor="LightGray"
                 />
@@ -156,8 +193,8 @@
                 Text="2"
                 FontSize="20"
                 Grid.Column="1"
-                Grid.Row="3"
-                Command="{Binding AddNumber}"
+                Grid.Row="4"
+                Command="{Binding SelectValue}"
                 CommandParameter="2"
                 BackgroundColor="LightGray"
                 />
@@ -165,15 +202,15 @@
                 Text="3"
                 FontSize="20"
                 Grid.Column="2"
-                Grid.Row="3"
-                Command="{Binding AddNumber}"
+                Grid.Row="4"
+                Command="{Binding SelectValue}"
                 CommandParameter="3"
                 BackgroundColor="LightGray"
                 />
             <Button
                 FontSize="20"
                 Grid.Column="3"
-                Grid.Row="3"
+                Grid.Row="4"
                 Text="+"
                 BackgroundColor="LightGray"
                 />
@@ -182,8 +219,8 @@
                 FontSize="20"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
-                Grid.Row="4"
-                Command="{Binding AddNumber}"
+                Grid.Row="5"
+                Command="{Binding SelectValue}"
                 CommandParameter="0"
                 BackgroundColor="LightGray"
                 />
@@ -191,15 +228,15 @@
                 Text="."
                 FontSize="20"
                 Grid.Column="2"
-                Grid.Row="4"
-                Command="{Binding AddNumber}"
+                Grid.Row="5"
+                Command="{Binding SelectValue}"
                 CommandParameter="."
                 BackgroundColor="LightGray"
                 />
             <Button
                 FontSize="20"
                 Grid.Column="3"
-                Grid.Row="4"
+                Grid.Row="5"
                 Text="="
                 BackgroundColor="LightGray"
                 />

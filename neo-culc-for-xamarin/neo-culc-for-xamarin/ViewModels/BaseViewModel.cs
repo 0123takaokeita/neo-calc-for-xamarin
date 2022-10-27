@@ -12,21 +12,6 @@ namespace neo_culc_for_xamarin.ViewModels
     /// </summary>
     public class BaseViewModel : INotifyPropertyChanged
     {
-
-        string title = string.Empty;
-        public string Title
-        {
-            get { return title; }
-            set { SetProperty(ref title, value); }
-        }
-
-        string subTitle = string.Empty;
-        public string SubTitle
-        {
-            get { return subTitle; }
-            set { SetProperty(ref subTitle, value); }
-        }
-
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")

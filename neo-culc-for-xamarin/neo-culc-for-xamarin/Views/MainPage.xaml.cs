@@ -4,6 +4,7 @@ using neo_culc_for_xamarin.Models;
 
 namespace neo_culc_for_xamarin
 {
+
     public partial class MainPage : ContentPage
     {
         public MainPage()
