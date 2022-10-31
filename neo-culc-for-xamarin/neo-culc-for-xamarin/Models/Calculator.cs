@@ -38,6 +38,10 @@ namespace neo_culc_for_xamarin.Models
         public void ClearDisplay() { }
         public void Decision() { }
         public void ChangeMode() { }
+
+        public void ReverseSign() {
+            DispText = (-decimal.Parse(DispText)).ToString();
+        }
     }
 
 }

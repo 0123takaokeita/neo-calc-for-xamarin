@@ -87,11 +87,11 @@
                 BackgroundColor="Orange"
                 />
             <Button
-                Text="√"
+                Text="+/-"
                 FontSize="20"
                 Grid.Column="1"
                 Grid.Row="1"
-                Command="{Binding ClearDisplay}"
+                Command="{Binding PushReverse}"
                 BackgroundColor="LightGray"
                 />
             <Button

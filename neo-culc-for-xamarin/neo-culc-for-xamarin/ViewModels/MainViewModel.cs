@@ -24,6 +24,7 @@ namespace neo_culc_for_xamarin.ViewModels
         public Command ClearDisplay { get; set; }
         public Command Decision { get; set; }
         public Command ChangeMode { get; set; }
+        public Command PushReverse { get; }
 
         public string Title { get => model.Title; set => model.Title = value; }
         public string SubTitle { get => model.SubTitle; set => model.SubTitle = value; }
@@ -38,6 +39,7 @@ namespace neo_culc_for_xamarin.ViewModels
             ClearDisplay = new Command(_clearDisplay);
             Decision = new Command(_decision);
             ChangeMode = new Command(_changeMode);
+            PushReverse = new Command(_pushReverse);
         }
 
         private void _reloadDisplay()
@@ -109,6 +111,13 @@ namespace neo_culc_for_xamarin.ViewModels
          // <param name="obj"></param>
         private void _selectOpelator(object obj)
         {
+        /// <summary>
+        /// +/- ボタンを押した場合に対応するメソッドを呼び出す。
+        /// </summary>
+        /// <param name="obj"></param>
+        private void _pushReverse(object obj)
+        {
+            model.ReverseSign();
             _reloadDisplay();
         }
     }
