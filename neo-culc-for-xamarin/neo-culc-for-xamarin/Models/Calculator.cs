@@ -99,6 +99,22 @@ namespace neo_culc_for_xamarin.Models
         public void ClearDisplay() { }
         public void Decision() { }
         public void ChangeMode() { }
+        /// <summary>
+        /// firstOperand secondOperand の計算結果を返す。
+        /// </summary>
+        /// <param name="firstOperand"></param>
+        /// <param name="secondOperand"></param>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        private decimal _execCalc(decimal firstOperand, decimal secondOperand, OperatorStateKind mode)
+        {
+            decimal result = secondOperand;
+            if (mode == OperatorStateKind.addition) result = firstOperand + secondOperand;
+            if (mode == OperatorStateKind.substraction) result = firstOperand - secondOperand;
+            if (mode == OperatorStateKind.multiplication) result = firstOperand * secondOperand;
+            if (mode == OperatorStateKind.division) result = firstOperand / secondOperand;
+            return result;
+        }
 
         public void ReverseSign() {
             DispText = (-decimal.Parse(DispText)).ToString();
