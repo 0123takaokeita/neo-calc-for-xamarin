@@ -64,10 +64,25 @@ namespace neo_culc_for_xamarin.Models
             SubTitle = OperatorState.ToString();
             DisplayState = DisplayStateKind.CLEAR;
         }
+
+        /// <summary>
+        /// 渡されたオペレーターの状態に合わせた計算結果に更新
+        /// </summary>
+        /// <returns name="result">計算結果</returns>
+        public void Decision()
         {
-            if (target.Length + 1 > DisplayLimit) return target;
-            if (target.Contains(".") && digit == ".") return target; // 入力を反映しない。 小数点モード
-            target = (target == "0" && digit != ".") ? digit : target + digit; // 整数モード
+            //TODO: 計算結果が桁あふれの場合を考慮していない。
+            //TODO: format を実施できていない。
+            decimal result = 0;
+            if (SecondNum == 0)
+            {
+                SecondNum = decimal.Parse(DispText);
+                result = _execCalc(FirstNum, SecondNum, OperatorState);
+            }
+            else
+            {
+                result = _execCalc(decimal.Parse(DispText), SecondNum, OperatorState);
+            }
 
             // TODO: データを保持する変数を振り分ける。
 
