@@ -99,6 +99,8 @@
                 FontSize="20"
                 Grid.Column="2"
                 Grid.Row="1"
+                Command="{Binding SelectOperator}"
+                CommandParameter="%"
                 BackgroundColor="LightGray"
                 />
             <Button
@@ -106,6 +108,8 @@
                 FontSize="20"
                 Grid.Column="3"
                 Grid.Row="1"
+                Command="{Binding SelectOperator}"
+                CommandParameter="÷"
                 BackgroundColor="LightGray"
                 />
             <Button
@@ -140,8 +144,8 @@
                 FontSize="20"
                 Grid.Column="3"
                 Grid.Row="2"
-                Command="{Binding ClearDisplay}"
-                CommandParameter="9"
+                Command="{Binding SelectOperator}"
+                CommandParameter="*"
                 BackgroundColor="LightGray"
                 />
             <Button
@@ -176,8 +180,8 @@
                 FontSize="20"
                 Grid.Column="3"
                 Grid.Row="3"
-                Command="{Binding ClearDisplay}"
-                CommandParameter="6"
+                Command="{Binding SelectOperator}"
+                CommandParameter="-"
                 BackgroundColor="LightGray"
                 />
             <Button
@@ -208,10 +212,12 @@
                 BackgroundColor="LightGray"
                 />
             <Button
+                Text="+"
                 FontSize="20"
                 Grid.Column="3"
                 Grid.Row="4"
-                Text="+"
+                Command="{Binding SelectOperator}"
+                CommandParameter="+"
                 BackgroundColor="LightGray"
                 />
             <Button
@@ -238,6 +244,7 @@
                 Grid.Column="3"
                 Grid.Row="5"
                 Text="="
+                Command="{Binding Decision}"
                 BackgroundColor="LightGray"
                 />
         </Grid>
