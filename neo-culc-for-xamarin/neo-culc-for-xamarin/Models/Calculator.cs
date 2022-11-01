@@ -93,6 +93,13 @@ namespace neo_culc_for_xamarin.Models
             // TODO: データを保持する変数を振り分ける。
 
             return target;
+        /// <summary>
+        /// 文字列の数字の符号を付け替える
+        /// </summary>
+        /// <param name="txt"></param>
+        public string ReverseSign(string txt)
+        {
+            return $"{-decimal.Parse(txt)}";
         }
 
         public void SelectOperator() { }
