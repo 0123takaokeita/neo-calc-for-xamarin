@@ -46,6 +46,24 @@ namespace neo_culc_for_xamarin.Models
         /// <param name="digit"></param>
         /// <returns></returns>
         public string SelectValue(string target, string digit)
+        /// <summary>
+        /// 入力されたオペレーターをもとにOperatorStateを更新する。
+        /// </summary>
+        /// <param name="ope">オペレーター</param>
+        /// <returns></returns>
+        public void SelectOperator(string ope)
+        {
+            FirstNum = decimal.Parse(DispText);
+            SecondNum = 0;
+
+            if (ope == "+") OperatorState = OperatorStateKind.addition;
+            if (ope == "-") OperatorState = OperatorStateKind.substraction;
+            if (ope == "*") OperatorState = OperatorStateKind.multiplication;
+            if (ope == "÷") OperatorState = OperatorStateKind.division;
+
+            SubTitle = OperatorState.ToString();
+            DisplayState = DisplayStateKind.CLEAR;
+        }
         {
             if (target.Length + 1 > DisplayLimit) return target;
             if (target.Contains(".") && digit == ".") return target; // 入力を反映しない。 小数点モード
