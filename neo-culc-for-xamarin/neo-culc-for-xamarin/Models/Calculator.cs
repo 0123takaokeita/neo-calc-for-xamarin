@@ -45,7 +45,13 @@ namespace neo_culc_for_xamarin.Models
         /// <param name="target"></param>
         /// <param name="digit"></param>
         /// <returns></returns>
-        public string SelectValue(string target, string digit)
+        public void SelectValue(string digit)
+        {
+            if (DisplayState == DisplayStateKind.CLEAR) DispText = "0";
+            DispText = _appendDigit(DispText, digit);
+            DisplayState = DisplayStateKind.INPUT;
+        }
+
         /// <summary>
         /// 入力されたオペレーターをもとにOperatorStateを更新する。
         /// </summary>
@@ -96,6 +102,17 @@ namespace neo_culc_for_xamarin.Models
 
         public void ReverseSign() {
             DispText = (-decimal.Parse(DispText)).ToString();
+        /// <summary>
+        /// 入力された文字を追加する。
+        /// </summary>
+        /// <param name="txt"></param>
+        /// <param name="dig"></param>
+        /// <returns>txt</returns>
+        private string _appendDigit(string txt, string dig)
+        {
+            if ((txt.Contains(".") && dig == ".") || (txt.Length + 1 > DisplayLimit)) return txt;
+            txt = (txt == "0" && dig != ".") ? dig : txt + dig;
+            return txt;
         }
     }
 
