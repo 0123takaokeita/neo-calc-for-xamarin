@@ -2,13 +2,12 @@ using neo_culc_for_xamarin.ViewModels;
 
 namespace neo_culc_for_xamarin.Models
 {
-
     public class Stock : ICommon
     {
-        public string Title { get; set; } = "株価取得";
+        public string Title { get; } = "株価取得";
         public string SubTitle { get; set; } = "株価を取得できます。";
         public string DispText { get; set; } = "コードを入力してください。";
-        public string ModeName{ get; set; } = "Stock";
+        public ModeKind ModeName { get; } = ModeKind.STOCK;
         private int DisplayLimit = 12;
 
         /// <summary>
@@ -18,20 +17,22 @@ namespace neo_culc_for_xamarin.Models
         /// <param name="target"></param>
         /// <param name="digit"></param>
         /// <returns></returns>
-        public string SelectValue(string target, string digit)
+        public void SelectValue(string digit)
         {
-            if (target.Length + 1 > DisplayLimit) return target;
-            if (target.Contains(".") && digit == ".") return target; // 入力を反映しない。 小数点モード
-            target = (target == "0" && digit != ".") ? digit : target + digit; // 整数モード
-
-            // TODO: データを保持する変数を振り分ける。
-            return target;
+            /* if (DispText.Length + 1 > DisplayLimit) ; */
+            /* if (DispText.Contains(".") && digit == ".") return DispText; // 入力を反映しない。 小数点モード */
+            /* DispText = (DispText == "0" && digit != ".") ? digit : DispText + digit; // 整数モード */
         }
 
-        public void SelectOperator() { }
-        public void ClearDisplay() { }
-        public void Decision() { }
-        public void ChangeMode() { }
+        /// <summary>
+        /// 入力されたOperetorに合わせてOperatorStateを更新する。
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="digit"></param>
+        /// <returns></returns>
+        public void SelectOperator(string ope) { }
+        public void Decision() {  }
+        public string ReverseSign(string txt) { return ""; }
     }
 
 }
