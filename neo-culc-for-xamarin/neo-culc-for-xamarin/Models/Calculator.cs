@@ -9,12 +9,34 @@ namespace neo_culc_for_xamarin.Models
         public string Title { get; set; } = "電卓";
         public string SubTitle { get; set; } = "計算を開始できます";
         public string DispText { get; set; } = "0";
-        public string ModeName{ get; } = "Calculator";
+        public ModeKind ModeName { get; } = ModeKind.CALCULATOR;
 
-        private int OperatorState { get; set; }
         private double FirstNum { get; set; }
         private double SecondNum { get; set; }
         private int DisplayLimit = 12;
+        private DisplayStateKind DisplayState = DisplayStateKind.INPUT;
+        private OperatorStateKind OperatorState = OperatorStateKind.none;
+
+        /// <summary>
+        /// 計算モードの管理
+        /// </summary>
+        public enum OperatorStateKind
+        {
+            none,
+            addition,
+            substraction,
+            multiplication,
+            division,
+        };
+
+        /// <summary>
+        /// 画面を初期化するかどうかの状態
+        /// </summary>
+        public enum DisplayStateKind
+        {
+            INPUT,
+            CLEAR,
+        };
 
         /// <summary>
         /// 入力された文字をDisplayに反映する。
