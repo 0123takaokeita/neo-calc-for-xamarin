@@ -5,16 +5,14 @@ namespace neo_culc_for_xamarin.ViewModels
 {
     public interface ICommon
     {
-        string Title { get; set; }
+        string Title { get; }
         string SubTitle { get; set; }
         string DispText { get; set; }
-        string ModeName { get; }
-        string SelectValue(string target, string digit);
-        void SelectOperator();
-        void ClearDisplay();
         ModeKind ModeName { get; }
+        void SelectValue(string digit);
+        void SelectOperator(string ope);
         void Decision();
-        void ChangeMode();
+        string ReverseSign(string txt);
     }
 
     /// <summary>
@@ -25,6 +23,10 @@ namespace neo_culc_for_xamarin.ViewModels
         CALCULATOR,
         STOCK,
     };
+
+    /// <summary>
+    /// 画面へのプロパティ変更通知を行う。変更は各Modelに任せる。
+    /// </summary>
     public class MainViewModel : BaseViewModel
     {
         public ICommon model;
@@ -35,11 +37,16 @@ namespace neo_culc_for_xamarin.ViewModels
         public Command ChangeMode { get; set; }
         public Command PushReverse { get; }
 
-        public string Title { get => model.Title; set => model.Title = value; }
+        // 委譲関係で Title の管理を任せている。
+        public string Title { get => model.Title; }
         public string SubTitle { get => model.SubTitle; set => model.SubTitle = value; }
         public string DispText { get => model.DispText; set => model.DispText = value; }
-        public string ModeName { get => model.ModeName; }
+        public ModeKind ModeName { get => model.ModeName; }
 
+        /// <summary>
+        /// コンストラクタ
+        /// ここで作成しているもののみ View側で使用できる。
+        /// </summary>
         public MainViewModel()
         {
             model = new Calculator();
@@ -51,6 +58,9 @@ namespace neo_culc_for_xamarin.ViewModels
             PushReverse = new Command(_pushReverse);
         }
 
+        /// <summary>
+        /// プロパティの更新を行う。
+        /// </summary>
         private void _reloadDisplay()
         {
             OnPropertyChanged("Title");
@@ -82,7 +92,7 @@ namespace neo_culc_for_xamarin.ViewModels
         /// <param name="obj"></param>
         private void _selectValue(object obj)
         {
-            DispText = model.SelectValue(DispText, obj.ToString());
+            model.SelectValue(obj.ToString());
             OnPropertyChanged("DispText");
         }
 
@@ -95,10 +105,10 @@ namespace neo_culc_for_xamarin.ViewModels
         {
             switch (ModeName)
             {
-                case ("Calculator"):
+                case (ModeKind.CALCULATOR):
                     model = new Calculator();
                     break;
-                case ("Stock"):
+                case (ModeKind.STOCK):
                     model = new Stock();
                     break;
             }
@@ -111,6 +121,7 @@ namespace neo_culc_for_xamarin.ViewModels
         /// <param name="obj"></param>
         private void _decision(object obj)
         {
+            model.Decision();
             _reloadDisplay();
         }
 
@@ -120,13 +131,17 @@ namespace neo_culc_for_xamarin.ViewModels
          // <param name="obj"></param>
         private void _selectOpelator(object obj)
         {
+            model.SelectOperator(obj.ToString());
+            _reloadDisplay();
+        }
+
         /// <summary>
         /// +/- ボタンを押した場合に対応するメソッドを呼び出す。
         /// </summary>
         /// <param name="obj"></param>
         private void _pushReverse(object obj)
         {
-            model.ReverseSign();
+            DispText = model.ReverseSign(DispText);
             _reloadDisplay();
         }
     }

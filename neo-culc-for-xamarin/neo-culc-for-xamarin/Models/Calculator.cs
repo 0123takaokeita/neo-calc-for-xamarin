@@ -2,17 +2,15 @@ using neo_culc_for_xamarin.ViewModels;
 
 namespace neo_culc_for_xamarin.Models
 {
-
-    /* public class Calculator : ICommon, ICommand */
     public class Calculator : ICommon
     {
-        public string Title { get; set; } = "電卓";
+        public string Title { get; } = "電卓";
         public string SubTitle { get; set; } = "計算を開始できます";
         public string DispText { get; set; } = "0";
         public ModeKind ModeName { get; } = ModeKind.CALCULATOR;
 
-        private double FirstNum { get; set; }
-        private double SecondNum { get; set; }
+        private decimal FirstNum;
+        private decimal SecondNum;
         private int DisplayLimit = 12;
         private DisplayStateKind DisplayState = DisplayStateKind.INPUT;
         private OperatorStateKind OperatorState = OperatorStateKind.none;
@@ -90,9 +88,11 @@ namespace neo_culc_for_xamarin.Models
                 result = _execCalc(decimal.Parse(DispText), SecondNum, OperatorState);
             }
 
-            // TODO: データを保持する変数を振り分ける。
+            DispText = result.ToString();
+            FirstNum = 0;
+            DisplayState = DisplayStateKind.CLEAR;
+        }
 
-            return target;
         /// <summary>
         /// 文字列の数字の符号を付け替える
         /// </summary>
@@ -102,10 +102,6 @@ namespace neo_culc_for_xamarin.Models
             return $"{-decimal.Parse(txt)}";
         }
 
-        public void SelectOperator() { }
-        public void ClearDisplay() { }
-        public void Decision() { }
-        public void ChangeMode() { }
         /// <summary>
         /// firstOperand secondOperand の計算結果を返す。
         /// </summary>
@@ -123,8 +119,6 @@ namespace neo_culc_for_xamarin.Models
             return result;
         }
 
-        public void ReverseSign() {
-            DispText = (-decimal.Parse(DispText)).ToString();
         /// <summary>
         /// 入力された文字を追加する。
         /// </summary>
