@@ -12,10 +12,19 @@ namespace neo_culc_for_xamarin.ViewModels
         string SelectValue(string target, string digit);
         void SelectOperator();
         void ClearDisplay();
+        ModeKind ModeName { get; }
         void Decision();
         void ChangeMode();
     }
 
+    /// <summary>
+    /// アプリのMode一覧
+    /// </summary>
+    public enum ModeKind
+    {
+        CALCULATOR,
+        STOCK,
+    };
     public class MainViewModel : BaseViewModel
     {
         public ICommon model;
