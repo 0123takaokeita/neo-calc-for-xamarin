@@ -75,20 +75,26 @@ namespace neo_culc_for_xamarin.Models
         /// <returns name="result">計算結果</returns>
         public void Decision()
         {
+            if (DispText == "E") return;
             decimal result = 0;
             if (SecondNum == 0)
             {
                 SecondNum = decimal.Parse(DispText);
-                result = _execCalc(FirstNum, SecondNum, OperatorState);
+                result = _execCalc(FirstNum, SecondNum);
             }
             else
             {
-                result = _execCalc(decimal.Parse(DispText), SecondNum, OperatorState);
+                result = _execCalc(decimal.Parse(DispText), SecondNum);
             }
 
-            DispText = result.ToString();
+            DispText = _convertNum(result.ToString());
             FirstNum = 0;
             DisplayState = DisplayStateKind.CLEAR;
+            if (DispText.Length >= 12)
+            {
+                DispText = "E";
+                SecondNum = 0;
+            }
         }
 
         /// <summary>
