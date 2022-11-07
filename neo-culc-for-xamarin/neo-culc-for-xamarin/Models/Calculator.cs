@@ -11,7 +11,7 @@ namespace neo_culc_for_xamarin.Models
 
         private decimal FirstNum;
         private decimal SecondNum;
-        private int DisplayLimit = 12;
+        private int DisplayLimit = 11;
         private DisplayStateKind DisplayState = DisplayStateKind.INPUT;
         private OperatorStateKind OperatorState = OperatorStateKind.none;
 
@@ -38,7 +38,6 @@ namespace neo_culc_for_xamarin.Models
 
         /// <summary>
         /// 入力された文字をDisplayに反映する。
-        /// 有効な場合は変数に値を保持する。
         /// </summary>
         /// <param name="target"></param>
         /// <param name="digit"></param>
@@ -47,6 +46,7 @@ namespace neo_culc_for_xamarin.Models
         {
             if (DisplayState == DisplayStateKind.CLEAR) DispText = "0";
             DispText = _appendDigit(DispText, digit);
+            if (!DispText.Contains(".")) DispText = _convertNum(DispText);
             DisplayState = DisplayStateKind.INPUT;
         }
 
@@ -75,8 +75,6 @@ namespace neo_culc_for_xamarin.Models
         /// <returns name="result">計算結果</returns>
         public void Decision()
         {
-            //TODO: 計算結果が桁あふれの場合を考慮していない。
-            //TODO: format を実施できていない。
             decimal result = 0;
             if (SecondNum == 0)
             {
@@ -100,6 +98,16 @@ namespace neo_culc_for_xamarin.Models
         public string ReverseSign(string txt)
         {
             return $"{-decimal.Parse(txt)}";
+        }
+
+
+        /// <summary>
+        /// 文字列をカンマ区切りでフォーマットする。
+        /// </summary>
+        /// <param name="num"></param>
+        private string _convertNum(string num)
+        {
+            return string.Format("{0:#,0}", decimal.Parse(num));
         }
 
         /// <summary>
