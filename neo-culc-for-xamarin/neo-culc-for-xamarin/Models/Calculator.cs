@@ -121,15 +121,14 @@ namespace neo_culc_for_xamarin.Models
         /// </summary>
         /// <param name="firstOperand"></param>
         /// <param name="secondOperand"></param>
-        /// <param name="mode"></param>
         /// <returns></returns>
-        private decimal _execCalc(decimal firstOperand, decimal secondOperand, OperatorStateKind mode)
+        private decimal _execCalc(decimal firstOperand, decimal secondOperand)
         {
             decimal result = secondOperand;
-            if (mode == OperatorStateKind.addition) result = firstOperand + secondOperand;
-            if (mode == OperatorStateKind.substraction) result = firstOperand - secondOperand;
-            if (mode == OperatorStateKind.multiplication) result = firstOperand * secondOperand;
-            if (mode == OperatorStateKind.division) result = firstOperand / secondOperand;
+            if (OperatorState == OperatorStateKind.addition) result = firstOperand + secondOperand;
+            if (OperatorState == OperatorStateKind.substraction) result = firstOperand - secondOperand;
+            if (OperatorState == OperatorStateKind.multiplication) result = firstOperand * secondOperand;
+            if (OperatorState == OperatorStateKind.division) result = firstOperand / secondOperand;
             return result;
         }
 
