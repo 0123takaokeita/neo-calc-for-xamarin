@@ -135,15 +135,14 @@ namespace neo_culc_for_xamarin.Models
         /// <summary>
         /// 入力された文字を追加する。
         /// </summary>
-        /// <param name="txt"></param>
+        /// <param name="subject"></param>
         /// <param name="dig"></param>
         /// <returns>txt</returns>
-        private string _appendDigit(string txt, string dig)
+        private string _appendDigit(string subject, string digit)
         {
-            if ((txt.Contains(".") && dig == ".") || (txt.Length + 1 > DisplayLimit)) return txt;
-            txt = (txt == "0" && dig != ".") ? dig : txt + dig;
-            return txt;
+            if ((subject.Contains(".") && digit == ".") || (subject.Length + 1 > DisplayLimit)) return subject;
+            subject = (subject == "0" && digit != ".") ? digit : subject + digit;
+            return subject;
         }
     }
-
 }
